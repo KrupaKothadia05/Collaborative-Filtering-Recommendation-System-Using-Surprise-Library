@@ -1,12 +1,13 @@
 # Collaborative-Filtering-Recommendation-System-Using-Surprise-Library
 RMSE Score: 0.9211
 
-Approach
+Approach:
 Recommender system makes use of either content-based filtering or collaborative Filtering system or both combined to predict as accurately as possible the user-item pair ratings. Content-based filtering recommends items to a particular customer similar to previous items rated highly by that particular user, while collaborative filtering finds the set of users that have similar preference as the user for which we want to predict the rating and on the basis of these set of user’s preferences we recommend the items to a particular user. Now a day the recommender system combines both the content-based and collaborative filtering system to make a hybrid collaborative filtering system that takes care of various major issues like cold start and sparsity. 
 I have used collaborative filtering approach, which predicts the user-item pair rating based on the k-values of nearest neighbours preferences and using “min_support” parameter in hyper-parameter tuning of algorithm, which takes care of cold start issue by discarding those users that have rated any items less than the value specified in “min_support” parameter. 
 
-Methodology and Associated Parameters
+Methodology and Associated Parameters:
 I have used the “Surprise Library” of Python, which was quite useful in developing a recommendation system because of its built-in algorithms for every functionalities. There are total three files used in this recommender system: Train.dat file consists of training dataset with 4 columns named “UserID”, “ItemID”, “Rating” and “Timestamp”. Test.dat file consists of test data set with two columns named “UserID” and “ItemID” and have to predict the ratings based on the user-item pair given in Test.dat file. Those estimated ratings are stored in Format.dat file by replacing the 1s in it with the equivalent number of predicted ratings. The libraries used in this recommendation system are Pandas, Numpy, Surprise, Matplotlib and Seaborn. The five steps implemented to recommend the ratings using surprise library are as below:
+
 1)	Import dataset: Downloading the dataset into Pandas data frame and making it accessible to Surprise by below line of code. Where the rating_scale is defined on the scale of 1 to 5, 5 being the best and 1 being the worst rating given by the user for a particular item.
 reader = Reader(rating_scale=(1, 5))
 data = Dataset.load_from_df(train_df[['UserID', 'ItemID', 'Rating']], reader)
